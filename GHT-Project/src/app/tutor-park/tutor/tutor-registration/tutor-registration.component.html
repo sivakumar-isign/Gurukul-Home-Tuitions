@@ -1,0 +1,19 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="resume">Upload Resume:</label>
+    <input id="resume" type="file" formControlName="resume">
+  </div>
+  <div>
+    <label for="drivingLicense">Driving License:</label>
+    <input id="drivingLicense" type="file" formControlName="drivingLicense">
+  </div>
+  <div>
+    <label for="addressProof">Address Proof:</label>
+    <input id="addressProof" type="file" formControlName="addressProof">
+  </div>
+  <div>
+    <label for="photo">Photo:</label>
+    <input id="photo" type="file" formControlName="photo">
+  </div>
+  <button type="submit">Submit</button>
+</form>
