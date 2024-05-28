@@ -1,19 +1,58 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="resume">Upload Resume:</label>
-    <input id="resume" type="file" formControlName="resume">
-  </div>
-  <div>
-    <label for="drivingLicense">Driving License:</label>
-    <input id="drivingLicense" type="file" formControlName="drivingLicense">
-  </div>
-  <div>
-    <label for="addressProof">Address Proof:</label>
-    <input id="addressProof" type="file" formControlName="addressProof">
-  </div>
-  <div>
-    <label for="photo">Photo:</label>
-    <input id="photo" type="file" formControlName="photo">
-  </div>
-  <button type="submit">Submit</button>
-</form>
+<div class="container">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" />
+    </div>
+    <div>
+      <label for="surname">Surname:</label>
+      <input id="surname" formControlName="surname" type="text" />
+    </div>
+    <div>
+      <label>Gender:</label>
+      <input type="radio" formControlName="gender" value="Male" /> Male
+      <input type="radio" formControlName="gender" value="Female" /> Female
+    </div>
+    <div>
+      <label for="dob">DOB:</label>
+      <input id="dob" formControlName="dob" type="date" />
+    </div>
+    <div>
+      <label for="city">City:</label>
+      <input id="city" formControlName="city" type="text" />
+    </div>
+    <div>
+      <label for="mobileNo">Mobile No.:</label>
+      <input id="mobileNo" formControlName="mobileNo" type="text" />
+    </div>
+    <div>
+      <label for="email">Email ID:</label>
+      <input id="email" formControlName="email" type="email" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" />
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input id="confirmPassword" formControlName="confirmPassword" type="password" />
+    </div>
+    <div>
+      <label for="resume">Upload Resume:</label>
+      <input id="resume" type="file" (change)="onFileChange($event, 'resume')" />
+    </div>
+    <div>
+      <label for="drivingLicense">Driving License:</label>
+      <input id="drivingLicense" type="file" (change)="onFileChange($event, 'drivingLicense')" />
+    </div>
+    <div>
+      <label for="addressProof">Address Proof:</label>
+      <input id="addressProof" type="file" (change)="onFileChange($event, 'addressProof')" />
+    </div>
+    <div>
+      <label for="photo">Photo:</label>
+      <input id="photo" type="file" (change)="onFileChange($event, 'photo')" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

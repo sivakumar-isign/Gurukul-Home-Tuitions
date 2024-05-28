@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonalDetails } from '../../models/personal-details.model';
 import { SharedDataService } from '../../services/shared-data.service';
+
 @Component({
   selector: 'app-personal-registration',
   templateUrl: './personal-registration.component.html',
@@ -20,7 +21,7 @@ export class PersonalRegistrationComponent {
       gender: ['', Validators.required],
       dob: ['', Validators.required],
       city: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNo: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // Changed to mobileNo
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]

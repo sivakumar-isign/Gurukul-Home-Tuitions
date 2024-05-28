@@ -20,7 +20,7 @@ export class TutorRegistrationService {
     tutorFormData.append('mobileNo', personalDetails.mobileNo);
     tutorFormData.append('email', personalDetails.email);
     tutorFormData.append('password', personalDetails.password);
-
+    console.log(tutorFormData);
     return this.http.post<any>(this.apiUrl, tutorFormData);
   }
 }
