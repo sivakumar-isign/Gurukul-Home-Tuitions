@@ -1,15 +1,17 @@
+// personal-registration.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { PersonalDetails } from '../../models/personal-details.model';
+import { SharedDataService } from '../../services/shared-data.service';
 @Component({
   selector: 'app-personal-registration',
   templateUrl: './personal-registration.component.html',
-  styleUrl: './personal-registration.component.css'
+  styleUrls: ['./personal-registration.component.css']
 })
 export class PersonalRegistrationComponent {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private sharedDataService: SharedDataService) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -33,7 +35,7 @@ export class PersonalRegistrationComponent {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
+      this.sharedDataService.setPersonalDetails(this.registrationForm.value as PersonalDetails);
     }
   }
 }
