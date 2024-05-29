@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TutorRegistrationService } from '../../../services/tutor-registration.service';
 
 @Component({
   selector: 'app-student-registration',
@@ -7,12 +8,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './student-registration.component.css'
 })
 export class StudentRegistrationComponent {
-  registrationForm: FormGroup;
+  registrationForm2: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private trs: TutorRegistrationService) { }
 
   ngOnInit(): void {
-    this.registrationForm = this.fb.group({
+    this.registrationForm2 = this.fb.group({
       board: ['', Validators.required],
       school: ['', Validators.required],
       class: ['', Validators.required],
@@ -31,13 +32,27 @@ export class StudentRegistrationComponent {
       motherEmail: ['', [Validators.required, Validators.email]],
       parentAddress: ['', Validators.required]
     });
+
+       // When form data changes, update the service data
+       this.registrationForm2.valueChanges.subscribe(value => {
+        this.trs.setForm2Data(value);
+      });
   }
 
   onSubmit() {
-    if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
-    } else {
-      console.log('Form is invalid');
-    }
-  }
+  //   if (this.registrationForm.valid) {
+  //     console.log(this.registrationForm.value);
+  //   } else {
+  //     console.log('Form is invalid');
+  //   }
+  // }
+
+
+  this.trs.submitData().subscribe(response => {
+    console.log('Data submitted successfully:', response);
+  }, error => {
+    console.error('Error submitting data:', error);
+  });
+}
+
 }

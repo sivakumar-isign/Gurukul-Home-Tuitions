@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TutorRegistrationService } from '../../services/tutor-registration.service';
 
 @Component({
   selector: 'app-personal-registration',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PersonalRegistrationComponent {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private trs: TutorRegistrationService) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -23,6 +24,10 @@ export class PersonalRegistrationComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.checkPasswords });
+       // When form data changes, update the service data
+       this.registrationForm.valueChanges.subscribe(value => {
+        this.trs.setForm1Data(value);
+      });
   }
 
   checkPasswords(group: FormGroup) {
@@ -31,9 +36,8 @@ export class PersonalRegistrationComponent {
     return pass === confirmPass ? null : { notSame: true };
   }
 
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
-    }
-  }
+
+
+
+
 }

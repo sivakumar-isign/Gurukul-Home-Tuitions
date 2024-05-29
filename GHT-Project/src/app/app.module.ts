@@ -14,6 +14,7 @@ import { PersonalRegistrationComponent } from './tutor-park/personal-registratio
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GurukulHomeComponent } from './gurukul-home/gurukul-home.component';
 import { CallToActionComponent } from './gurukul-home/call-to-action/call-to-action.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CallToActionComponent } from './gurukul-home/call-to-action/call-to-act
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
    
   ],
   providers: [
