@@ -29,7 +29,7 @@ setForm2Data(data: any) {
 submitData(): Observable<any> {
   const mergedData = { ...this.form1Data, ...this.form2Data };
   console.log('Merged data:', mergedData);
-  return this.http.post('http://localhost:8080/api/submit', mergedData);
+  return this.http.post('http://localhost:5555/api/tutors/register', mergedData);
 }
 
 
