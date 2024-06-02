@@ -1,19 +1,21 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+<form (ngSubmit)="onSubmit()">
   <div>
-    <label for="resume">Upload Resume:</label>
-    <input id="resume" type="file" formControlName="resume">
+    <label for="resume">Resume:</label>
+    <input type="file" id="resume" (change)="onFileChange($event, 'resume')" accept=".pdf, .docx, .jpeg, .png">
   </div>
   <div>
     <label for="drivingLicense">Driving License:</label>
-    <input id="drivingLicense" type="file" formControlName="drivingLicense">
+    <input type="file" id="drivingLicense" (change)="onFileChange($event, 'drivingLicense')" accept=".pdf, .docx, .jpeg, .png">
   </div>
   <div>
     <label for="addressProof">Address Proof:</label>
-    <input id="addressProof" type="file" formControlName="addressProof">
+    <input type="file" id="addressProof" (change)="onFileChange($event, 'addressProof')" accept=".pdf, .docx, .jpeg, .png">
   </div>
   <div>
     <label for="photo">Photo:</label>
-    <input id="photo" type="file" formControlName="photo">
+    <input type="file" id="photo" (change)="onFileChange($event, 'photo')" accept=".pdf, .docx, .jpeg, .png">
   </div>
   <button type="submit">Submit</button>
 </form>
+

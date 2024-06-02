@@ -8,12 +8,12 @@ import { TutorRegistrationService } from '../../../services/tutor-registration.s
   styleUrl: './student-registration.component.css'
 })
 export class StudentRegistrationComponent {
-  registrationForm2: FormGroup;
+  registrationForm: FormGroup;
 
   constructor(private fb: FormBuilder,private trs: TutorRegistrationService) { }
 
   ngOnInit(): void {
-    this.registrationForm2 = this.fb.group({
+    this.registrationForm = this.fb.group({
       board: ['', Validators.required],
       school: ['', Validators.required],
       class: ['', Validators.required],
@@ -33,26 +33,21 @@ export class StudentRegistrationComponent {
       parentAddress: ['', Validators.required]
     });
 
-       // When form data changes, update the service data
-       this.registrationForm2.valueChanges.subscribe(value => {
-        this.trs.setForm2Data(value);
-      });
+   
   }
 
   onSubmit() {
-  //   if (this.registrationForm.valid) {
-  //     console.log(this.registrationForm.value);
-  //   } else {
-  //     console.log('Form is invalid');
-  //   }
-  // }
 
-
-  this.trs.submitData().subscribe(response => {
-    console.log('Data submitted successfully:', response);
-  }, error => {
-    console.error('Error submitting data:', error);
-  });
-}
+    if (this.registrationForm.valid) {
+      this.trs.createStudent(this.registrationForm.value).subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      console.log('Form is invalid');
+    }
+  }
 
 }
+
