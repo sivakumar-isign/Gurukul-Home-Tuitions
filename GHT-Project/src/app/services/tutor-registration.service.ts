@@ -13,6 +13,8 @@ export class TutorRegistrationService {
 
 
 private form1Data: any = {};
+private form2Data: any = {};
+
 
 private uploadUrl = 'http://localhost:5555/api/tutors/register';  
 
@@ -20,6 +22,11 @@ constructor(private http: HttpClient) {}
 
 setForm1Data(data: any) {
   this.form1Data = data;
+  console.log("form1Data", this.form1Data);
+}
+setForm2Data(data: any) {
+  this.form2Data = data;
+  console.log("form2Data", this.form2Data);
 }
 
 
@@ -72,11 +79,12 @@ private handleError(error: HttpErrorResponse) {
 
 //Student Service
 
-private baseUrl = 'http://localhost:8081/api/students/save';
+private baseUrl = 'http://localhost:5555/api/students/save';
 
 
-createStudent(student: Object): Observable<Object> {
-  return this.http.post(`${this.baseUrl}`, student);
+createStudent(data: any): Observable<Object> {
+  const combinedData = { ...this.form1Data, ...this.form2Data };
+  return this.http.post(`${this.baseUrl}`, combinedData);
 }
 
 

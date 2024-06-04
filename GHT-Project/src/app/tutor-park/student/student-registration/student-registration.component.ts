@@ -33,11 +33,13 @@ export class StudentRegistrationComponent {
       parentAddress: ['', Validators.required]
     });
 
-   
+    this.registrationForm.valueChanges.subscribe(value => {
+      this.trs.setForm2Data(value);
+      console.log(value);
+    });
   }
 
   onSubmit() {
-
     if (this.registrationForm.valid) {
       this.trs.createStudent(this.registrationForm.value).subscribe(data => {
         console.log(data);
