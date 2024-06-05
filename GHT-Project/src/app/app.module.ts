@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GurukulHomeComponent } from './gurukul-home/gurukul-home.component';
 import { CallToActionComponent } from './gurukul-home/call-to-action/call-to-action.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     StudentDashboardComponent,
     PersonalRegistrationComponent,
     GurukulHomeComponent,
-    CallToActionComponent
+    CallToActionComponent,
+    HeaderComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
